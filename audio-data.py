@@ -1,5 +1,5 @@
 """
-This will read the files in the cwd into a list, then read the filenames
+This will read the m4a files in the cwd into a list, and open each file with mutagen
 Split the filenames into artist and title and add them to the metadata
 """
 
