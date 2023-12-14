@@ -60,3 +60,4 @@ jobs:
         with:
           prerelease: true
           generateReleaseNotes: true
+          artifacts: edit_mp4*
