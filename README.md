@@ -1,5 +1,5 @@
-# Edit MP4
-Just a tiny thing to help me have an easier time doing basic manual editing of new mp4/m4a files
+# Edit MP3, MP4, and M4A
+Just a tiny thing to help me have an easier time doing basic manual editing of new music files
 
 # Front-end:
 * CustomTkinter
@@ -7,6 +7,7 @@ Just a tiny thing to help me have an easier time doing basic manual editing of n
 
 # Back-end:
 * mutagen (EasyMP4)
+* mutagen (EasyID3)
 * pillow
 * re
 * os
