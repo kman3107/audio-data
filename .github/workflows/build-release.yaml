@@ -50,13 +50,10 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: edit_mp4
+          path: artifacts/
       - name: Display structure of downloaded files
         run: ls -R
-        working-directory: .
-
-      - name: unzip artifact for deployment
-        run: unzip edit_mp4.zip
+        working-directory: artifacts/
 
       - name: Upload artifact
         uses: ncipollo/release-action@v1
