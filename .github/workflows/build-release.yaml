@@ -21,6 +21,7 @@ jobs:
         # https://devguide.python.org/versions
         python-version: [ '3.11' ]
         os: [ windows-latest, ubuntu-latest, macos-latest ]
+        platform: [ windows, linux, macos ]
     steps:
 
       - name: Create Executable
@@ -39,9 +40,12 @@ jobs:
             --collect-data customtkinter,
             --collect-data mutagen
 
+      - name: Zip artifact for deployment
+        run: zip edit_mp4-${{ matrix.platform }}.zip ./* -r
+
   release-build:
     needs: pyinstaller-build
-    runs-on: windows-latest
+    runs-on: ${{ matrix.os }}
     permissions:
       contents: write
     steps:
@@ -50,7 +54,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: edit_mp4
+          name: edit_mp4-${{ matrix.platform }}
       - name: Display structure of downloaded files
         run: ls -R
 
@@ -59,4 +63,4 @@ jobs:
         with:
           prerelease: true
           generateReleaseNotes: true
-          artifacts: edit_mp4.exe
+          artifacts: edit_mp4-${{ matrix.platform }}.zip
