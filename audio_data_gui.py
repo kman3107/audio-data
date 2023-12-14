@@ -16,7 +16,8 @@ class TheFrame(customtkinter.CTkFrame):
         self.working_dir_dialog = customtkinter.CTkInputDialog(title="Working Directory",
                                                                text="Input absolute path to working directory:")
         # Set favicon (title bar icon)
-        self.working_dir_dialog.iconpath = ImageTk.PhotoImage(file="logo_light.png")
+        self.logo = "logo_light.png"
+        self.working_dir_dialog.iconpath = ImageTk.PhotoImage(file=self.logo)
         self.working_dir_dialog.wm_iconbitmap()
         self.after(250, lambda: self.working_dir_dialog.iconphoto(False, self.working_dir_dialog.iconpath))
 
@@ -73,7 +74,7 @@ class TheFrame(customtkinter.CTkFrame):
         # add button
         self.submit_button = customtkinter.CTkButton(master=self, font=("Frankling Gothic", 14), text="Submit",
                                                      command=self.do_deed)
-        self.submit_button.grid(column=1, row=5, padx=4, pady=5, sticky="nsew")
+        self.submit_button.grid(column=1, row=5, padx=4, pady=(0, 10), sticky="nsew")
 
     def do_deed(self):
         work_dir = str(self.set_data_var.get())
@@ -117,14 +118,15 @@ class App(customtkinter.CTk):
         customtkinter.set_default_color_theme("dark-blue")  # Themes: blue (default), dark-blue, green
 
         # Set favicon (title bar icon)
-        self.iconpath = ImageTk.PhotoImage(file="logo_light.png")
+        self.logo = "logo_light.png"
+        self.iconpath = ImageTk.PhotoImage(file=self.logo)
         self.wm_iconbitmap()
         self.iconphoto(False, self.iconpath)
 
         # Set window title, size, grid index and width
         self.title("Edit MP4")
-        self.geometry("900x600")
-        self.minsize(900, 600)
+        self.geometry("720x480")
+        self.minsize(720, 480)
 
         # create grid system
         self.grid_rowconfigure(0, weight=1)
