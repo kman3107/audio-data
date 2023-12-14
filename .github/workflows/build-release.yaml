@@ -22,6 +22,22 @@ jobs:
         python-version: [ '3.11' ]
         os: [ windows-latest, ubuntu-latest, macos-latest ]
     steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v4
+#
+#      - name: Set up Python ${{ matrix.python-version }}
+#        uses: actions/setup-python@v4
+#        with:
+#          python-version: ${{ matrix.python-version }}
+#          # Options are pip, pipenv, or poetry
+#          cache: "pip"
+#          cache-dependency-path: '**/requirements.txt'
+#
+#      - name: Install dependencies
+#        run: |
+#          python -m pip install --upgrade pip
+#           if (Test-Path requirements.txt) { pip install -r requirements.txt }
+#        shell: pwsh
 
       - name: Create Executable
         uses: sayyid5416/pyinstaller@v1
@@ -34,8 +50,8 @@ jobs:
             --onefile,
             --name "edit_mp4",
             --windowed,
-            --icon favicon_light.ico,
-            --add-data "favicon_light.ico:.",
+            --icon logo_light.png,
+            --add-data "logo_light.png:.",
             --collect-data customtkinter,
             --collect-data mutagen
 
