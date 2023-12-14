@@ -7,6 +7,6 @@ Just a tiny thing to help me have an easier time doing basic manual editing of n
 
 # Back-end:
 * mutagen (EasyMP4)
+* pillow
 * re
 * os
-* pathlib
