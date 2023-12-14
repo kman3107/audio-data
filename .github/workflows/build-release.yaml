@@ -45,7 +45,7 @@ jobs:
 
   release-build:
     needs: pyinstaller-build
-    runs-on: ${{ matrix.os }}
+    runs-on: [ ubuntu-latest ]
     permissions:
       contents: write
     steps:
