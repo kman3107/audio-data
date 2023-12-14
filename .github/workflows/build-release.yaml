@@ -21,7 +21,6 @@ jobs:
         # https://devguide.python.org/versions
         python-version: [ '3.11' ]
         os: [ windows-latest, ubuntu-latest, macos-latest ]
-        platform: [ windows, linux, macos ]
     steps:
 
       - name: Create Executable
@@ -41,7 +40,7 @@ jobs:
             --collect-data mutagen
 
       - name: Zip artifact for deployment
-        run: zip edit_mp4-${{ matrix.platform }}.zip ./* -r
+        run: zip edit_mp4-${{ matrix.os }}.zip ./* -r
 
   release-build:
     needs: pyinstaller-build
@@ -54,7 +53,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: edit_mp4-${{ matrix.platform }}
+          name: edit_mp4-${{ matrix.os }}
       - name: Display structure of downloaded files
         run: ls -R
 
@@ -63,4 +62,4 @@ jobs:
         with:
           prerelease: true
           generateReleaseNotes: true
-          artifacts: edit_mp4-${{ matrix.platform }}.zip
+          artifacts: edit_mp4-${{ matrix.os }}.zip
