@@ -1,6 +1,7 @@
 """
 a simple gui
 """
+import re
 import os
 import sys
 import tkinter
@@ -41,10 +42,10 @@ class TheFrame(customtkinter.CTkFrame):
                                                     text="Remove from filename:")
         self.rm_data_label.grid(column=0, row=1, padx=4, pady=5, sticky="ew")
         self.set_data_label = customtkinter.CTkLabel(master=self, font=("Frankling Gothic", 14),
-                                                     text="Set MP4 tags for files in path:")
+                                                     text="Set tags for files in path:")
         self.set_data_label.grid(column=0, row=3, padx=4, pady=5, sticky="ew")
         self.get_data_label = customtkinter.CTkLabel(master=self, font=("Frankling Gothic", 14),
-                                                     text="Get MP4 tags for files in path:")
+                                                     text="Get tags for files in path:")
         self.get_data_label.grid(column=0, row=4, padx=4, pady=5, sticky="ew")
 
         # add entry boxes
@@ -87,22 +88,31 @@ class TheFrame(customtkinter.CTkFrame):
             case 1:
                 if prep_str:
                     janitor.prepend(prep_str)
-                    messagebox.showinfo(master=None, parent=app, title="MP4 Tags",
+                    messagebox.showinfo(master=None, parent=app, title="File Tags",
                                         message=f"{prep_str} has been prepended for all files in: {work_dir}")
             case 2:
                 if rm_str:
                     janitor.remove_substr(rm_str)
-                    messagebox.showinfo(master=None, parent=app, title="MP4 Tags",
+                    messagebox.showinfo(master=None, parent=app, title="File Tags",
                                         message=f"Removed {rm_str} in all filenames in '{work_dir}' if found")
             case 3:
                 janitor.set_metadata()
-                messagebox.showinfo(master=None, parent=app, title="MP4 Tags",
+                messagebox.showinfo(master=None, parent=app, title="File Tags",
                                     message=f"Artist and title tags have been set for all files in: {work_dir}")
             case 4:
-                messagebox.showinfo(master=None, parent=app, title="MP4 Tags",
-                                    message=f"{janitor.get_metadata()}")
+                new_list = []
+                for element in janitor.get_metadata():
+                    for key in element:
+                        if key == "artist" or "title" in key:
+                            if key == "artist":
+                                new_list.append(f"{element[key]}")
+                            else:
+                                new_list.append(f"\n{element[key]}")
+                new_list2 = " ".join(new_list)
+                new_list3 = re.sub("({.*?})", "", new_list2)
+                messagebox.showinfo(master=None, parent=app, title="File Tags", message=new_list3)
             case _:
-                messagebox.showinfo(master=None, parent=app, title="MP4 Tags",
+                messagebox.showinfo(master=None, parent=app, title="File Tags",
                                     message="Please choose a function before trying to submit")
 
 
@@ -127,7 +137,7 @@ class App(customtkinter.CTk):
         self.iconphoto(False, self.iconpath)
 
         # Set window title, size, grid index and width
-        self.title("Edit MP4")
+        self.title("Edit MP3/4")
         self.geometry("720x480")
         self.minsize(720, 480)
 
