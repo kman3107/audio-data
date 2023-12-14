@@ -131,18 +131,17 @@ class App(customtkinter.CTk):
         self.geometry("720x480")
         self.minsize(720, 480)
 
+        # bind the feature to all Entry widget
+        self.bind_class("Entry", "<Button-3><ButtonRelease-3>", self.show_textmenu)
+        self.bind_class("Entry", "<Control-a>", self.callback_select_all)
+
         # create grid system
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)
-        # noinspection PyTypeChecker
 
         # Initialize content frames
         self.the_frame = TheFrame(master=self)
         self.the_frame.grid(column=0, row=0, rowspan=2, pady=30, padx=30, sticky="nswe")
-
-        # bind the feature to all Text widget
-        self.bind_class("Entry", "<Button-3><ButtonRelease-3>", self.show_textmenu)
-        self.bind_class("Entry", "<Control-a>", self.callback_select_all)
 
     # create menu call
     def show_textmenu(self, event):
