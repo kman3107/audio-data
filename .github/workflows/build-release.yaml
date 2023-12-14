@@ -34,7 +34,7 @@ jobs:
             --name "edit_mp4",
             --windowed,
             --icon logo_light.png,
-            --add-data "logo_light.png:.",
+            --add-data "logo_light.png:./",
             --collect-data customtkinter,
             --collect-data mutagen
 
