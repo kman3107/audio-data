@@ -3,11 +3,11 @@ a simple gui
 """
 
 import os
-from pathlib import Path
 import tkinter
 from tkinter import messagebox
 import customtkinter
 from audio_data import AudioFiles as Af
+from PIL import ImageTk
 
 
 class TheFrame(customtkinter.CTkFrame):
@@ -17,7 +17,9 @@ class TheFrame(customtkinter.CTkFrame):
         self.working_dir_dialog = customtkinter.CTkInputDialog(title="Working Directory",
                                                                text="Input absolute path to working directory:")
         # Set favicon (title bar icon)
-        self.after(250, lambda: self.working_dir_dialog.iconbitmap(os.path.join(Path(__file__).parent, "favicon_light.ico")))
+        self.working_dir_dialog.iconpath = ImageTk.PhotoImage(file=os.path.join("./", "logo_light.png"))
+        self.working_dir_dialog.wm_iconbitmap()
+        self.after(250, lambda: self.working_dir_dialog.iconphoto(False, self.working_dir_dialog.iconpath))
 
         self.prep_data_var = customtkinter.StringVar()
         self.rm_data_var = customtkinter.StringVar()
@@ -116,10 +118,9 @@ class App(customtkinter.CTk):
         customtkinter.set_default_color_theme("dark-blue")  # Themes: blue (default), dark-blue, green
 
         # Set favicon (title bar icon)
-        self.iconbitmap(os.path.join(Path(__file__).parent, "favicon_light.ico"))
-
-        # Set some variables to be used by CTk
-        # self.textbox_var = customtkinter.StringVar(value="EXAMPLE")
+        self.iconpath = ImageTk.PhotoImage(file=os.path.join("./", "logo_light.png"))
+        self.wm_iconbitmap()
+        self.iconphoto(False, self.iconpath)
 
         # Set window title, size, grid index and width
         self.title("Edit MP4")
