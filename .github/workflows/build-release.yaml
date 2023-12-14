@@ -55,9 +55,15 @@ jobs:
         run: ls -R
         working-directory: artifacts/
 
+      - name: Zip artifact for deployment
+        run: |
+          zip edit_mp4-linux.zip artifacts/edit_mp4/edit_mp4
+          zip edit_mp4-windows.zip artifacts/edit_mp4/edit_mp4.exe
+          zip edit_mp4-macos.zip artifacts/edit_mp4/edit_mp4.app/ -r
+
       - name: Upload artifact
         uses: ncipollo/release-action@v1
         with:
           prerelease: true
           generateReleaseNotes: true
-          artifacts: artifacts/edit_mp4*
+          artifacts: artifacts/edit_mp4/*.zip
