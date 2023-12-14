@@ -3,7 +3,7 @@ This will read the m4a files in the cwd into a list, and open each file with mut
 Split the filenames into artist and title and add them to the metadata
 """
 import re
-import os.path
+import os
 from mutagen.easymp4 import EasyMP4
 
 
