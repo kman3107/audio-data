@@ -35,7 +35,7 @@ jobs:
             --name "edit_mp4",
             --windowed,
             --icon favicon_light.ico,
-            --add-data "favicon_light.ico;./",
+            --add-data "favicon_light.ico;.",
             --collect-data customtkinter,
             --collect-data mutagen
 
