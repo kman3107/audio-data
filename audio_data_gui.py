@@ -117,7 +117,7 @@ class App(customtkinter.CTk):
         customtkinter.set_default_color_theme("dark-blue")  # Themes: blue (default), dark-blue, green
 
         # Set favicon (title bar icon)
-        self.iconpath = ImageTk.PhotoImage(os.path.join("./", "logo_light.png"))
+        self.iconpath = ImageTk.PhotoImage(file=os.path.join("./", "logo_light.png"))
         self.wm_iconbitmap()
         self.iconphoto(False, self.iconpath)
 
