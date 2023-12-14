@@ -63,6 +63,6 @@ jobs:
       - name: Upload artifact
         uses: ncipollo/release-action@v1
         with:
-          prerelease: true
+          prerelease: false
           generateReleaseNotes: true
           artifacts: "*.zip"
