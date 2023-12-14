@@ -1,0 +1,28 @@
+changelog:
+  exclude:
+    labels:
+      - ignore-release
+  categories:
+    - title: ❗ Major Changes
+      labels:
+        - Semver-Major
+        - major-change
+        - breaking-change
+    - title: 🛠 Minor Changes
+      labels:
+        - Semver-Minor
+        - minor-change
+    - title: ✨ Features
+      labels:
+        - Semver-Minor
+        - enhancment
+        - feat
+    - title: 🪲 Fixes
+      labels:
+        - Semver-Patch
+        - fix
+        - patch
+    - title: 🎗️ Other Changes
+      labels:
+        - chore
+        - "*"
