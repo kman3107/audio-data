@@ -39,10 +39,6 @@ jobs:
             --collect-data customtkinter,
             --collect-data mutagen
 
-      - name: Zip artifact for deployment
-        run: Compress-Archive . edit_mp4-${{ matrix.os }}.zip
-        shell: pwsh
-
   release-build:
     needs: pyinstaller-build
     runs-on: [ ubuntu-latest ]
@@ -54,13 +50,16 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: edit_mp4-${{ matrix.os }}
+          name: edit_mp4
       - name: Display structure of downloaded files
         run: ls -R
+        working-directory: .
+
+      - name: unzip artifact for deployment
+        run: unzip edit_mp4.zip
 
       - name: Upload artifact
         uses: ncipollo/release-action@v1
         with:
           prerelease: true
           generateReleaseNotes: true
-          artifacts: edit_mp4-${{ matrix.os }}.zip
