@@ -2,6 +2,7 @@
 a simple gui
 """
 import os
+import sys
 import tkinter
 from tkinter import messagebox
 import customtkinter
@@ -16,7 +17,9 @@ class TheFrame(customtkinter.CTkFrame):
         self.working_dir_dialog = customtkinter.CTkInputDialog(title="Working Directory",
                                                                text="Input absolute path to working directory:")
         # Set favicon (title bar icon)
-        self.working_dir_dialog.iconpath = ImageTk.PhotoImage(file=os.path.join("./", "logo_light.png"))
+        bundle_dir = getattr(sys, '_MEIPASS', os.path.abspath(os.path.dirname(__file__)))
+        path_to_logo = os.path.abspath(os.path.join(bundle_dir, 'logo_light.png'))
+        self.working_dir_dialog.iconpath = ImageTk.PhotoImage(file=path_to_logo)
         self.working_dir_dialog.wm_iconbitmap()
         self.after(250, lambda: self.working_dir_dialog.iconphoto(False, self.working_dir_dialog.iconpath))
 
@@ -117,7 +120,9 @@ class App(customtkinter.CTk):
         customtkinter.set_default_color_theme("dark-blue")  # Themes: blue (default), dark-blue, green
 
         # Set favicon (title bar icon)
-        self.iconpath = ImageTk.PhotoImage(file=os.path.join("./", "logo_light.png"))
+        bundle_dir = getattr(sys, '_MEIPASS', os.path.abspath(os.path.dirname(__file__)))
+        path_to_logo = os.path.abspath(os.path.join(bundle_dir, 'logo_light.png'))
+        self.iconpath = ImageTk.PhotoImage(file=path_to_logo)
         self.wm_iconbitmap()
         self.iconphoto(False, self.iconpath)
 
