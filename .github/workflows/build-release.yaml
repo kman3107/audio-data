@@ -40,7 +40,8 @@ jobs:
             --collect-data mutagen
 
       - name: Zip artifact for deployment
-        run: zip edit_mp4-${{ matrix.os }}.zip ./* -r
+        run: Compress-Archive . edit_mp4-${{ matrix.os }}.zip
+        shell: pwsh
 
   release-build:
     needs: pyinstaller-build
