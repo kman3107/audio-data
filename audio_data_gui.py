@@ -3,17 +3,11 @@ a simple gui
 """
 
 import os
-import sys
 from pathlib import Path
 import tkinter
 from tkinter import messagebox
 import customtkinter
 from audio_data import AudioFiles as Af
-
-
-# function for a way to exit app
-def exit_button():
-    sys.exit(0)
 
 
 class TheFrame(customtkinter.CTkFrame):
