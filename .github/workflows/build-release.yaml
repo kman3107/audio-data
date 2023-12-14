@@ -28,10 +28,10 @@ jobs:
           python_ver: ${{ matrix.python-version }}
           spec: 'audio_data_gui.py'
           requirements: 'requirements.txt'
-          upload_exe_with_name: edit_mp4
+          upload_exe_with_name: edit_mpX
           options: >
             --onefile,
-            --name "edit_mp4",
+            --name "edit_mpX",
             --windowed,
             --icon logo_light.png,
             --add-data "logo_light.png:./",
@@ -49,13 +49,13 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: edit_mp4
+          name: edit_mpX
 
       - name: Zip artifact for deployment
         run: |
-          zip edit_mp4-linux.zip edit_mp4
-          zip edit_mp4-windows.zip edit_mp4.exe
-          zip edit_mp4-macos.zip edit_mp4.app/ -r
+          zip edit_mpX-linux.zip edit_mpX
+          zip edit_mpX-windows.zip edit_mpX.exe
+          zip edit_mpX-macos.zip edit_mpX.app/ -r
 
       - name: Display structure of downloaded files
         run: ls -R
