@@ -10,3 +10,4 @@ Just a tiny thing to help me have an easier time doing basic manual editing of n
 * pillow
 * re
 * os
+* sys
