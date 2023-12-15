@@ -55,7 +55,7 @@ jobs:
       - name: Zip artifact for deployment
         run: |
           zip edit_mpX-linux.zip edit_mpX-ubuntu-latest
-          zip edit_mpX-windows.zip edit_mpX-windows-latest.exe
+          zip edit_mpX-windows.zip edit_mpX-windows-latest
           zip edit_mpX-macos.zip edit_mpX-macos-latest/ -r
 
       - name: Upload artifact
