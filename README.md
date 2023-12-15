@@ -37,4 +37,5 @@ Once you have the filename with something like 'Artist Name - Song Title.mp3', y
 ![empX_get](https://github.com/kman3107/audio-data/assets/10728652/5194f8ad-5651-4d06-b7eb-422054395564)
 
 To check if the tags are set you can use the get tag part of the app. Will show in popup as ['Title'] ['Artist']
+
 NOTE! There is a limit to how many files tags you can see as the info box can not be scrolled.
