@@ -28,7 +28,7 @@ jobs:
           python_ver: ${{ matrix.python-version }}
           spec: 'audio_data_gui.py'
           requirements: 'requirements.txt'
-          upload_exe_with_name: edit_mpX
+          upload_exe_with_name: edit_mpX-${{ matrix.os }}
           options: >
             --onefile,
             --name "edit_mpX",
@@ -48,17 +48,15 @@ jobs:
 
       - name: Download artifact
         uses: actions/download-artifact@v3
-        with:
-          name: edit_mpX
+
+      - name: Display structure of downloaded files
+        run: ls -R
 
       - name: Zip artifact for deployment
         run: |
           zip edit_mpX-linux.zip edit_mpX
           zip edit_mpX-windows.zip edit_mpX.exe
           zip edit_mpX-macos.zip edit_mpX.app/ -r
-
-      - name: Display structure of downloaded files
-        run: ls -R
 
       - name: Upload artifact
         uses: ncipollo/release-action@v1
