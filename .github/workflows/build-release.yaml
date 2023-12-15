@@ -37,7 +37,7 @@ jobs:
             --add-data "logo_light.png:./",
             --collect-data customtkinter,
             --collect-data mutagen
-            --hidden-imports PIL._tkinter_finder
+            --hidden-import PIL._tkinter_finder
 
   release-build:
     needs: pyinstaller-build
