@@ -28,13 +28,13 @@ jobs:
           python_ver: ${{ matrix.python-version }}
           spec: 'audio_data_gui.py'
           requirements: 'requirements.txt'
-          upload_exe_with_name: edit_mpX-${{ matrix.os }}
+          upload_exe_with_name: Manipulator-${{ matrix.os }}
           options: >
             --onefile,
-            --name "edit_mpX",
+            --name "Manipulator",
             --windowed,
-            --icon logo_light.png,
-            --add-data "logo_light.png:./",
+            --icon favicon_light.ico,
+            --add-data "favicon_light.ico:./",
             --collect-data customtkinter,
             --collect-data mutagen
             --hidden-import PIL._tkinter_finder
@@ -55,9 +55,9 @@ jobs:
 
       - name: Zip artifact for deployment
         run: |
-          zip edit_mpX-linux.zip edit_mpX-ubuntu-latest/ -r
-          zip edit_mpX-windows.zip edit_mpX-windows-latest/ -r
-          zip edit_mpX-macos.zip edit_mpX-macos-latest/ -r
+          zip Manipulator-linux.zip edit_mpX-ubuntu-latest/ -r
+          zip Manipulator-windows.zip edit_mpX-windows-latest/ -r
+          zip Manipulator-macos.zip edit_mpX-macos-latest/ -r
 
       - name: Upload artifact
         uses: ncipollo/release-action@v1

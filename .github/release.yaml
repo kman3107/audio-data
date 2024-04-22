@@ -8,6 +8,7 @@ changelog:
         - Semver-Major
         - major-change
         - breaking-change
+        - breaking
     - title: 🛠 Minor Changes
       labels:
         - Semver-Minor
@@ -15,8 +16,8 @@ changelog:
     - title: ✨ Features
       labels:
         - Semver-Minor
-        - enhancment
         - feat
+        - enhancment
     - title: 🪲 Fixes
       labels:
         - Semver-Patch
@@ -25,4 +26,5 @@ changelog:
     - title: 🎗️ Other Changes
       labels:
         - chore
+        - doc
         - "*"
