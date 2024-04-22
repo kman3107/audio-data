@@ -55,9 +55,9 @@ jobs:
 
       - name: Zip artifact for deployment
         run: |
-          zip Manipulator-linux.zip edit_mpX-ubuntu-latest/ -r
-          zip Manipulator-windows.zip edit_mpX-windows-latest/ -r
-          zip Manipulator-macos.zip edit_mpX-macos-latest/ -r
+          zip Manipulator-linux.zip Manipulator-ubuntu-latest/ -r
+          zip Manipulator-windows.zip Manipulator-windows-latest/ -r
+          zip Manipulator-macos.zip Manipulator-macos-latest/ -r
 
       - name: Upload artifact
         uses: ncipollo/release-action@v1
