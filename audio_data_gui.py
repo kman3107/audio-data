@@ -19,11 +19,12 @@ class TheFrame(customtkinter.CTkFrame):
                                                                text="Input absolute path to working directory:")
         # Set favicon (title bar icon)
         bundle_dir = getattr(sys, '_MEIPASS', os.path.abspath(os.path.dirname(__file__)))
-        path_to_logo = os.path.abspath(os.path.join(bundle_dir, 'logo_light.png'))
+        path_to_logo = os.path.abspath(os.path.join(bundle_dir, 'favicon_light.ico'))
         self.working_dir_dialog.iconpath = ImageTk.PhotoImage(file=path_to_logo)
         self.working_dir_dialog.wm_iconbitmap()
         self.after(250, lambda: self.working_dir_dialog.iconphoto(False, self.working_dir_dialog.iconpath))
 
+        self.ape_data_var = customtkinter.StringVar()
         self.prep_data_var = customtkinter.StringVar()
         self.rm_data_var = customtkinter.StringVar()
         self.set_data_var = customtkinter.StringVar(value=self.working_dir_dialog.get_input())
@@ -32,74 +33,89 @@ class TheFrame(customtkinter.CTkFrame):
         # noinspection PyTypeChecker
         self.grid_columnconfigure((0, 1), weight=8)
         self.grid_columnconfigure(2, weight=2)
-        self.grid_rowconfigure((0, 1, 2, 3, 4, 5), weight=1)
+        self.grid_rowconfigure((0, 1, 2, 3, 4, 5, 6), weight=1)
 
         # add labels
+        self.ape_data_label = customtkinter.CTkLabel(master=self, font=("Frankling Gothic", 14),
+                                                     text="Append filename with:")
+        self.ape_data_label.grid(column=0, row=0, padx=4, pady=5, sticky="ew")
         self.prep_data_label = customtkinter.CTkLabel(master=self, font=("Frankling Gothic", 14),
                                                       text="Prepend filename with:")
-        self.prep_data_label.grid(column=0, row=0, padx=4, pady=5, sticky="ew")
+        self.prep_data_label.grid(column=0, row=1, padx=4, pady=5, sticky="ew")
         self.rm_data_label = customtkinter.CTkLabel(master=self, font=("Frankling Gothic", 14),
                                                     text="Remove from filename:")
-        self.rm_data_label.grid(column=0, row=1, padx=4, pady=5, sticky="ew")
+        self.rm_data_label.grid(column=0, row=2, padx=4, pady=5, sticky="ew")
         self.set_data_label = customtkinter.CTkLabel(master=self, font=("Frankling Gothic", 14),
                                                      text="Set tags for files in path:")
-        self.set_data_label.grid(column=0, row=3, padx=4, pady=5, sticky="ew")
+        self.set_data_label.grid(column=0, row=4, padx=4, pady=5, sticky="ew")
         self.get_data_label = customtkinter.CTkLabel(master=self, font=("Frankling Gothic", 14),
                                                      text="Get tags for files in path:")
-        self.get_data_label.grid(column=0, row=4, padx=4, pady=5, sticky="ew")
+        self.get_data_label.grid(column=0, row=5, padx=4, pady=5, sticky="ew")
 
         # add entry boxes
+        self.ape_data_entry = customtkinter.CTkEntry(master=self, font=("Franklin Gothic", 14),
+                                                     textvariable=self.ape_data_var)
+        self.ape_data_entry.grid(column=1, row=0, padx=4, pady=5, sticky="ew")
         self.prep_data_entry = customtkinter.CTkEntry(master=self, font=("Franklin Gothic", 14),
                                                       textvariable=self.prep_data_var)
-        self.prep_data_entry.grid(column=1, row=0, padx=4, pady=5, sticky="ew")
+        self.prep_data_entry.grid(column=1, row=1, padx=4, pady=5, sticky="ew")
         self.rm_data_entry = customtkinter.CTkEntry(master=self, font=("Franklin Gothic", 14),
                                                     textvariable=self.rm_data_var)
-        self.rm_data_entry.grid(column=1, row=1, padx=4, pady=5, sticky="ew")
+        self.rm_data_entry.grid(column=1, row=2, padx=4, pady=5, sticky="ew")
         self.set_data_entry = customtkinter.CTkEntry(master=self, font=("Franklin Gothic", 14),
                                                      textvariable=self.set_data_var, fg_color="transparent",
                                                      border_width=0, state="readonly")
-        self.set_data_entry.grid(column=1, row=3, rowspan=2, padx=4, pady=5, sticky="nsew")
+        self.set_data_entry.grid(column=1, row=4, rowspan=2, padx=4, pady=5, sticky="nsew")
 
         # add radio buttons
+        self.ape_data_radio = customtkinter.CTkRadioButton(master=self, font=("Frankling Gothic", 14), text="",
+                                                           variable=self.radio_var, value=1)
+        self.ape_data_radio.grid(column=2, row=0, padx=4, pady=5, sticky="e")
         self.prep_data_radio = customtkinter.CTkRadioButton(master=self, font=("Frankling Gothic", 14), text="",
-                                                            variable=self.radio_var, value=1)
-        self.prep_data_radio.grid(column=2, row=0, padx=4, pady=5, sticky="e")
+                                                            variable=self.radio_var, value=2)
+        self.prep_data_radio.grid(column=2, row=1, padx=4, pady=5, sticky="e")
         self.rm_data_radio = customtkinter.CTkRadioButton(master=self, font=("Frankling Gothic", 14), text="",
-                                                          variable=self.radio_var, value=2)
-        self.rm_data_radio.grid(column=2, row=1, padx=4, pady=5, sticky="e")
+                                                          variable=self.radio_var, value=3)
+        self.rm_data_radio.grid(column=2, row=2, padx=4, pady=5, sticky="e")
         self.set_data_radio = customtkinter.CTkRadioButton(master=self, font=("Frankling Gothic", 14), text="",
-                                                           variable=self.radio_var, value=3)
-        self.set_data_radio.grid(column=2, row=3, padx=4, pady=5, sticky="e")
-        self.get_data_radio = customtkinter.CTkRadioButton(master=self, font=("Frankling Gothic", 14), text="",
                                                            variable=self.radio_var, value=4)
-        self.get_data_radio.grid(column=2, row=4, padx=4, pady=5, sticky="e")
+        self.set_data_radio.grid(column=2, row=4, padx=4, pady=5, sticky="e")
+        self.get_data_radio = customtkinter.CTkRadioButton(master=self, font=("Frankling Gothic", 14), text="",
+                                                           variable=self.radio_var, value=5)
+        self.get_data_radio.grid(column=2, row=5, padx=4, pady=5, sticky="e")
 
         # add button
         self.submit_button = customtkinter.CTkButton(master=self, font=("Frankling Gothic", 14), text="Submit",
                                                      command=self.do_deed)
-        self.submit_button.grid(column=1, row=5, padx=4, pady=(0, 10), sticky="nsew")
+        self.submit_button.grid(column=1, row=6, padx=4, pady=(0, 10), sticky="nsew")
 
     def do_deed(self):
         work_dir = str(self.set_data_var.get())
+        ape_str = str(self.ape_data_var.get())
         prep_str = str(self.prep_data_var.get())
         rm_str = str(self.rm_data_var.get())
         janitor = Af(work_dir)
         match self.radio_var.get():
             case 1:
+                if ape_str:
+                    janitor.append(ape_str)
+                    messagebox.showinfo(master=None, parent=app, title="File Tags",
+                                        message=f"{ape_str} has been appended for all files in: {work_dir}")
+            case 2:
                 if prep_str:
                     janitor.prepend(prep_str)
                     messagebox.showinfo(master=None, parent=app, title="File Tags",
                                         message=f"{prep_str} has been prepended for all files in: {work_dir}")
-            case 2:
+            case 3:
                 if rm_str:
                     janitor.remove_substr(rm_str)
                     messagebox.showinfo(master=None, parent=app, title="File Tags",
                                         message=f"Removed {rm_str} in all filenames in '{work_dir}' if found")
-            case 3:
+            case 4:
                 janitor.set_metadata()
                 messagebox.showinfo(master=None, parent=app, title="File Tags",
                                     message=f"Artist and title tags have been set for all files in: {work_dir}")
-            case 4:
+            case 5:
                 new_list = []
                 for element in janitor.get_metadata():
                     for key in element:
@@ -131,7 +147,7 @@ class App(customtkinter.CTk):
 
         # Set favicon (title bar icon)
         bundle_dir = getattr(sys, '_MEIPASS', os.path.abspath(os.path.dirname(__file__)))
-        path_to_logo = os.path.abspath(os.path.join(bundle_dir, 'logo_light.png'))
+        path_to_logo = os.path.abspath(os.path.join(bundle_dir, 'favicon_light.ico'))
         self.iconpath = ImageTk.PhotoImage(file=path_to_logo)
         self.wm_iconbitmap()
         self.iconphoto(False, self.iconpath)
