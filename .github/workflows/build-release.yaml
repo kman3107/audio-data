@@ -49,6 +49,10 @@ jobs:
 
       - name: Download artifact
         uses: actions/download-artifact@v4
+        with:
+          path: Manipulator
+          pattern: Manipulator-*
+          merge-multiple: true
 
       - name: Display structure of downloaded files
         run: ls -R
