@@ -6,13 +6,12 @@ changelog:
     - title: ❗ Major Changes
       labels:
         - Semver-Major
-        - major-change
-        - breaking-change
+        - major
         - breaking
     - title: 🛠 Minor Changes
       labels:
         - Semver-Minor
-        - minor-change
+        - minor
     - title: ✨ Features
       labels:
         - Semver-Minor
