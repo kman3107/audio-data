@@ -1,9 +1,9 @@
-coverage==5.5
-customtkinter==5.2.1
+coverage==7.4.4
+customtkinter==5.2.2
 darkdetect==0.8.0
 deprecation==2.1.0
 filetype==1.2.0
 mutagen==1.47.0
-packaging==23.2
-Pillow==10.1.0
+packaging==24.0
+Pillow==10.3.0
 toml==0.10.2

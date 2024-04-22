@@ -2,6 +2,7 @@
 *.mp3
 *.m4a
 .archive/
+pyinstaller-command.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
