@@ -97,3 +97,10 @@ class AudioFiles:
                 src = os.path.join(self.dir_w_files, f)
                 dst = os.path.join(self.dir_w_files, re.sub(f"{substr}.*?", "", f))
                 os.rename(src, dst)
+
+    def replace_substr(self, rmstr, mkstr):
+        for i, f in enumerate(os.listdir(self.dir_w_files)):
+            if os.path.isfile(f):
+                src = os.path.join(self.dir_w_files, f)
+                dst = os.path.join(self.dir_w_files, re.sub(f"{rmstr}.*?", f"{mkstr}", f))
+                os.rename(src, dst)
