@@ -31,7 +31,7 @@ jobs:
           upload_exe_with_name: Manipulator-${{ matrix.os }}
           options: >
             --onefile,
-            --name "Manipulator",
+            --name "Manipulator-${{ matrix.os }}",
             --windowed,
             --icon favicon_light.ico,
             --add-data "favicon_light.ico:./",
