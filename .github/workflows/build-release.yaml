@@ -59,7 +59,7 @@ jobs:
 
       - name: Zip artifact for deployment
         run: |
-          zip -r Manipulator-windows.zip Manipulator-windows-latest/
+          zip -r Manipulator-windows.zip Manipulator/Manipulator-windows-latest.exe
         # zip -r Manipulator-linux.zip Manipulator-ubuntu-latest/
         # zip -r Manipulator-macos.zip Manipulator-macos-latest/
 
