@@ -20,7 +20,7 @@ jobs:
       matrix:
         # https://devguide.python.org/versions
         python-version: [ '3.11' ]
-        os: [ windows-latest ]
+        os: [ windows-latest, ubuntu-latest, macos-latest ]
     steps:
       - name: Create Executable
         uses: sayyid5416/pyinstaller@v1
@@ -60,8 +60,8 @@ jobs:
       - name: Zip artifact for deployment
         run: |
           zip -r Manipulator-windows.zip Manipulator/Manipulator-windows-latest.exe
-        # zip -r Manipulator-linux.zip Manipulator-ubuntu-latest/
-        # zip -r Manipulator-macos.zip Manipulator-macos-latest/
+          zip -r Manipulator-linux.zip Manipulator/Manipulator-ubuntu-latest.exe
+          zip -r Manipulator-macos.zip Manipulator/Manipulator-macos-latest.exe
 
       - name: Upload artifact
         uses: ncipollo/release-action@v1
