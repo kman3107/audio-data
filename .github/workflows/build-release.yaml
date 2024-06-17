@@ -20,7 +20,7 @@ jobs:
       matrix:
         # https://devguide.python.org/versions
         python-version: [ '3.11' ]
-        os: [ windows-latest, ubuntu-latest, macos-latest ]
+        os: [ windows-latest ]
     steps:
       - name: Create Executable
         uses: sayyid5416/pyinstaller@v1
@@ -28,7 +28,7 @@ jobs:
           python_ver: ${{ matrix.python-version }}
           spec: 'audio_data_gui.py'
           requirements: 'requirements.txt'
-          # upload_exe_with_name: Manipulator-${{ matrix.os }}
+          upload_exe_with_name: Manipulator-${{ matrix.os }}
           options: >
             --onefile,
             --name "Manipulator",
@@ -38,12 +38,6 @@ jobs:
             --collect-data customtkinter,
             --collect-data mutagen
             --hidden-import PIL._tkinter_finder
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Manipulator-${{ matrix.os }}
-          path: file-${{ matrix.os }}.txt
 
   release-build:
     needs: pyinstaller-build
@@ -65,9 +59,9 @@ jobs:
 
       - name: Zip artifact for deployment
         run: |
-          zip Manipulator-linux.zip Manipulator-ubuntu-latest/ -r
           zip Manipulator-windows.zip Manipulator-windows-latest/ -r
-          zip Manipulator-macos.zip Manipulator-macos-latest/ -r
+        # zip Manipulator-linux.zip Manipulator-ubuntu-latest/ -r
+        # zip Manipulator-macos.zip Manipulator-macos-latest/ -r
 
       - name: Upload artifact
         uses: ncipollo/release-action@v1
