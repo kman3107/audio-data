@@ -52,7 +52,7 @@ jobs:
         with:
           path: Manipulator
           pattern: Manipulator-*
-          merge-multiple: true
+          merge-multiple: false
 
       - name: Display structure of downloaded files
         run: ls -R
